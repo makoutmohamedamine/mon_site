@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme Académique - Génie Informatique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #7c3aed  50%, #db2777 75%, #dc2626 100%); }
+        .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .text-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-link { position: relative; overflow: hidden; }
+        .nav-link::before { content: ''; position: absolute; bottom: 0; left: -100%; width: 100%; height: 2px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); transition: left 0.3s ease; }
+        .nav-link:hover::before { left: 0; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Principal -->
+    <header class="gradient-header text-white relative overflow-hidden">
+        <!-- Éléments décoratifs flottants -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-float"></div>
+            <div class="absolute top-40 right-20 w-16 h-16 bg-white bg-opacity-10 rounded-full animate-float" style="animation-delay: -2s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-12 h-12 bg-white bg-opacity-10 rounded-full animate-float" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="relative z-10 glass-effect border-b border-white border-opacity-20">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
+                            <img src="logo.png" alt="">
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold">Plateforme Académique</h1>
+                            <p class="text-sm text-blue-100">Système D'Informations Et Transformation Digital</p>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" onclick="showPage('accueil')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Accueil</a>
+                        <a href="#" onclick="showPage('filiere')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Filière</a>
+                        <a href="#" onclick="showPage('cours')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Cours</a>
+                        <a href="#" onclick="showPage('ressources')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Ressources</a>
+                        <a href="#" onclick="showPage('planning')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Planning</a>
+                        <a href="#" onclick="showPage('projets')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Projets</a>
+                        <a href="#" onclick="showPage('contact')" class="nav-link px-3 py-2 text-sm font-medium hover:text-blue-200 transition-colors">Contact</a>
+                    </div>
+                    <button class="md:hidden text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <div class="relative z-10 container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    Système D'Informations <span class="text-yellow-300">Transformation Digital</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+Avec SITD, chaque étudiant devient acteur du changement et leader de la transformation digitale.                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="showPage('cours')" class="bg-white text-blue-900 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all transform hover:scale-105">
+                        🚀 Accéder aux cours
+                    </button>
+                    <button onclick="showPage('filiere')" class="glass-effect border border-white border-opacity-30 px-8 py-4 rounded-xl font-semibold hover:bg-white hover:bg-opacity-20 transition-all">
+                        📖 Découvrir la filière
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="min-h-screen">
+        <!-- Page Accueil -->
+        <div id="accueil-page" class="page-content">
+            <section class="py-16">
+                <div class="container mx-auto px-6">
+                    <!-- Stats Section -->
+                    <div class="grid md:grid-cols-4 gap-8 mb-16">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">👨‍🎓</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-2">120+</h3>
+                            <p class="text-gray-600">Étudiants</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">👨‍🏫</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-2">9+</h3>
+                            <p class="text-gray-600">Professeurs</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-2">11+</h3>
+                            <p class="text-gray-600">Cours</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🏆</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-800 mb-2">95%</h3>
+                            <p class="text-gray-600">Réussite</p>
+                        </div>
+                    </div>
+
+                    <!-- Actualités -->
+                    <div class="mb-16">
+                        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">📢 Actualités</h2>
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div class="bg-white rounded-2xl shadow-lg card-hover p-6">
+                                <div class="w-full h-48 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl mb-4 flex items-center justify-center">
+                                    <img src="images.jpg" alt="">
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Message de la part du prof du JAVA</h3>
+<p class="text-gray-600 mb-4">
+  Bonjour Makout Mohamed Amine,<br>
+  Je vous prie de bien vouloir partager avec vos camarades le lien du formulaire Google Forms suivant :<br>
+  🔗 <a href="https://forms.gle/imUbsoxLJL25ZTof8" target="_blank" class="text-blue-600 underline">Accéder au formulaire</a><br><br>
+  Ce formulaire a pour objectif de permettre aux étudiants d’accéder à la classe virtuelle de la filière LST SITD sur Google Classroom. <br>
+  ✅ Tous les champs obligatoires doivent être remplis avec soin.<br>
+  ⚠ Remarque importante : Seules les adresses Gmail (Google) sont acceptées. Aucune autre adresse électronique ne permet l’accès à la classe virtuelle.<br>
+  📌 Important : Tous les supports de cours, les séries de TD et de TP, ainsi que le dépôt des comptes-rendus et des travaux demandés seront effectués exclusivement via Google Classroom.<br><br>
+  Je vous remercie pour votre collaboration et votre réactivité.<br><br>
+  Bien cordialement,<br>
+  Professeur MAKROUM El MOSTAFA<br>
+  Responsable du module Programmation Orientée Objet
+</p>
+
+                                <span class="text-sm text-blue-600 font-medium">23 septembre 2025</span>
+                            </div>
+                            <div class="bg-white rounded-2xl shadow-lg card-hover p-6">
+                                <div class="w-full h-48 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl mb-4 flex items-center justify-center">
+                                  <img src="images.jpg" alt="">
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Important!!!</h3>
+                                <p class="text-gray-600 mb-4">Bonjour tous le monde j’espère que vous allez bien j’aimerais bien vous informer que les séances de cette semaine de chacun de : 
+Marketing digital
+Développement web
+E-commerce E-logistique E-business
+Système d’information
+Base de données 
+❌❌ Sont officiellement annulé ❌❌    
+    Sauf la séance de la ✅✅programmation orientée objet (java) ✅✅qui est approuvé de la part du professeur le jeudi Inchalah .</p>
+                                <span class="text-sm text-blue-600 font-medium">12 Janvier 2024</span>
+                            </div>
+                            <div class="bg-white rounded-2xl shadow-lg card-hover p-6">
+                                <div class="w-full h-48 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl mb-4 flex items-center justify-center">
+                                    <img src="images.jpg" alt="">
+                                </div>
+                                <h3 class="text-xl font-semibold mb-3">Partenariat entreprises</h3>
+                                <p class="text-gray-600 mb-4">Nouveaux partenariats avec les leaders technologiques pour les stages.</p>
+                                <span class="text-sm text-blue-600 font-medium">10 Janvier 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page Filière -->
+<div id="filiere-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gradient mb-6">
+                    Filière Systèmes d’Information et Transformation Digitale (SITD)
+                </h1>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    💡 La filière <strong>SITD</strong> incarne l’<strong>excellence académique</strong> et 
+                    l’<strong>innovation technologique</strong>, en formant des étudiants capables de 
+                    concevoir, développer et piloter des <strong>systèmes d’information performants</strong>.  
+                    <br><br>
+                    🚀 Elle allie théorie et pratique pour offrir une expertise solide en 
+                    <strong>programmation orientée objet</strong>, <strong>bases de données</strong>, 
+                    <strong>développement web</strong>, <strong>e-business</strong> et 
+                    <strong>marketing digital</strong>.  
+                    <br><br>
+                    🎯 L’objectif : former des <strong>ingénieurs d’élite</strong>, 
+                    acteurs majeurs de la <strong>transformation numérique</strong>, 
+                    prêts à relever les défis technologiques du 21<sup>ème</sup> siècle.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+                    <!-- Présentation détaillée -->
+                 <div class="grid lg:grid-cols-2 gap-12 mb-16">
+    <div class="space-y-6">
+        <h2 class="text-3xl font-bold text-gray-800">🎯 Objectifs de la formation</h2>
+        <div class="space-y-4">
+            <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-blue-600">✓</span>
+                </div>
+                <p class="text-gray-700">💡 <strong>Former des experts en systèmes d’information</strong> capables de concevoir, déployer et administrer des solutions numériques performantes.</p>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-blue-600">✓</span>
+                </div>
+                <p class="text-gray-700">👨‍💻 <strong>Développer des compétences avancées</strong> en programmation orientée objet, bases de données et développement web.</p>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-blue-600">✓</span>
+                </div>
+                <p class="text-gray-700">🚀 <strong>Accompagner la transformation digitale</strong> des entreprises à travers l’e-business, l’e-logistique, le e-commerce et l’analytique décisionnelle.</p>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-blue-600">✓</span>
+                </div>
+                <p class="text-gray-700">📊 <strong>Maîtriser le marketing digital et l’analyse des données</strong> pour soutenir la compétitivité et l’innovation.</p>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-blue-600">✓</span>
+                </div>
+                <p class="text-gray-700">🌍 <strong>Préparer des leaders numériques</strong> capables de piloter des projets stratégiques et de contribuer à l’évolution des organisations.</p>
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-6">📊 Statistiques</h3>
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700">Taux des etudiants qui ont terminer master</span>
+                                    <span class="font-bold text-green-600">98%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 98%"></div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700">Salaire moyen de sortie</span>
+                                    <span class="font-bold text-blue-600">4500</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700">Satisfaction étudiants</span>
+                                    <span class="font-bold text-purple-600">4.8/5</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full" style="width: 96%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Parcours -->
+                   <div class="mb-16">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">🛤️ Parcours de formation</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Semestre 5 -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center card-hover">
+            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-2xl">5️⃣</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Semestre 5</h3>
+            <p class="text-gray-600 mb-4">Modules spécialisés en développement et systèmes</p>
+            <ul class="text-sm text-gray-500 space-y-1">
+                <li>• Développement Web</li>
+                <li>• E-business, E-logistique, E-commerce</li>
+                <li>• Système d’information</li>
+                <li>• Marketing Digital et Digital Analytics</li>
+                <li>• Programmation orientée objet</li>
+                <li>• Base de données</li>
+            </ul>
+        </div>
+
+        <!-- Semestre 6 -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 text-center card-hover">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <span class="text-2xl">6️⃣</span>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Semestre 6</h3>
+            <p class="text-gray-600 mb-4">Modules de spécialisation avancée et projet final</p>
+            <ul class="text-sm text-gray-500 space-y-1">
+                <li>• Conduite de projet digital</li>
+                <li>• Outils d’aide à la décision et Business Intelligence</li>
+                <li>• Développement Mobile et Internet des objets</li>
+                <li>• Projet de Fin d'Études (2 mois)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+                    <!-- Débouchés -->
+                    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
+                        <h2 class="text-3xl font-bold mb-8 text-center">🚀 Débouchés professionnels</h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-xl">💻</span>
+                                </div>
+                                <h3 class="font-semibold mb-2">Développeur</h3>
+                                <p class="text-sm text-blue-100">Full-stack, Mobile, Web</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-xl">🤖</span>
+                                </div>
+                                <h3 class="font-semibold mb-2">IA Engineer</h3>
+                                <p class="text-sm text-blue-100">Machine Learning, Deep Learning</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-xl">📊</span>
+                                </div>
+                                <h3 class="font-semibold mb-2">Data Scientist</h3>
+                                <p class="text-sm text-blue-100">Big Data, Analytics</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-xl">🏗️</span>
+                                </div>
+                                <h3 class="font-semibold mb-2">Architecte</h3>
+                                <p class="text-sm text-blue-100">Solutions, Systèmes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+<!-- Page Cours -->
+<div id="cours-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gradient mb-4">📚 Catalogue des cours</h1>
+                <p class="text-xl text-gray-600">Découvrez les modules du semestre 5 et 6</p>
+            </div>
+
+            <!-- Filtres -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <button class="filter-btn active bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors" data-filter="all">
+                    Tous les modules
+                </button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition-colors" data-filter="s5">
+                    Semestre 5
+                </button>
+                <button class="filter-btn bg-gray-200 text-gray-700 px-6 py-3 rounded-full font-medium hover:bg-gray-300 transition-colors" data-filter="s6">
+                    Semestre 6
+                </button>
+            </div>
+
+            <!-- Grille des cours -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="cours-grid">
+
+                <!-- Développement Web -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s5">
+                    <div class="w-full h-48 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">🌐</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Développement Web</h3>
+                    <p class="text-gray-600 mb-4">Cours : 30h | TD : 22h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-orange-100 text-orange-800 px-3 py-1 rounded-full">Semestre 5</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 transition-colors" onclick="showChapters('developpement-web')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- E-business -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s5">
+                    <div class="w-full h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">🛒</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">E-business, E-logistique, E-commerce</h3>
+                    <p class="text-gray-600 mb-4">Cours : 34h | TD : 12h | TP : 6h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Semestre 5</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors" onclick="showChapters('e-business')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Système d'information -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s5">
+                    <div class="w-full h-48 bg-gradient-to-br from-green-400 to-green-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">📂</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Système d'information</h3>
+                    <p class="text-gray-600 mb-4">Cours : 32h | TD : 10h | TP : 10h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">Semestre 5</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors" onclick="showChapters('systeme-information')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Marketing Digital -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s5">
+                    <div class="w-full h-48 bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Marketing Digital et Digital Analytics</h3>
+                    <p class="text-gray-600 mb-4">Cours : 34h | TD : 12h | TP : 7h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-purple-100 text-purple-800 px-3 py-1 rounded-full">Semestre 5</span>
+                        <span class="text-sm text-gray-500">53h</span>
+                    </div>
+                    <button class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors" onclick="showChapters('marketing-digital')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Programmation orientée objet -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s5">
+                    <div class="w-full h-48 bg-gradient-to-br from-red-400 to-red-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">💻</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Programmation orientée objet</h3>
+                    <p class="text-gray-600 mb-4">Cours : 28h | TD : 10h | TP : 14h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-red-100 text-red-800 px-3 py-1 rounded-full">Semestre 5</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors" onclick="showChapters('programmation-objet')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Base de données -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s5">
+                    <div class="w-full h-48 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">🗄️</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Base de données</h3>
+                    <p class="text-gray-600 mb-4">Cours : 24h | TD : 12h | TP : 12h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full">Semestre 5</span>
+                        <span class="text-sm text-gray-500">48h</span>
+                    </div>
+                    <button class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors" onclick="showChapters('base-donnees')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Semestre 6 -->
+
+                <!-- Conduite de projet digital -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s6">
+                    <div class="w-full h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">📋</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Conduite de projet digital</h3>
+                    <p class="text-gray-600 mb-4">Cours : 30h | TD : 12h | TP : 10h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">Semestre 6</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-yellow-600 text-white py-3 rounded-lg hover:bg-yellow-700 transition-colors" onclick="showChapters('conduite-projet')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Outils d'aide à la décision -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s6">
+                    <div class="w-full h-48 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">📊</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Outils d'aide à la décision et Business Intelligence</h3>
+                    <p class="text-gray-600 mb-4">Cours : 28h | TD : 12h | TP : 12h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-pink-100 text-pink-800 px-3 py-1 rounded-full">Semestre 6</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-pink-600 text-white py-3 rounded-lg hover:bg-pink-700 transition-colors" onclick="showChapters('outils-decision')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Développement Mobile -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s6">
+                    <div class="w-full h-48 bg-gradient-to-br from-teal-400 to-teal-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">📱</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Développement Mobile et Internet des objets</h3>
+                    <p class="text-gray-600 mb-4">Cours : 28h | TP : 24h</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-teal-100 text-teal-800 px-3 py-1 rounded-full">Semestre 6</span>
+                        <span class="text-sm text-gray-500">52h</span>
+                    </div>
+                    <button class="w-full bg-teal-600 text-white py-3 rounded-lg hover:bg-teal-700 transition-colors" onclick="showChapters('developpement-mobile')">
+                        Accéder au module
+                    </button>
+                </div>
+
+                <!-- Projet de Fin d'Études -->
+                <div class="course-card bg-white rounded-2xl shadow-lg card-hover p-6" data-category="s6">
+                    <div class="w-full h-48 bg-gradient-to-br from-gray-400 to-gray-600 rounded-xl mb-6 flex items-center justify-center">
+                        <span class="text-4xl text-white">🎓</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Projet de Fin d'Études</h3>
+                    <p class="text-gray-600 mb-4">Durée : 2 mois</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-sm bg-gray-100 text-gray-800 px-3 py-1 rounded-full">Semestre 6</span>
+                        <span class="text-sm text-gray-500">Stage</span>
+                    </div>
+                    <button class="w-full bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition-colors" onclick="showChapters('projet-fin-etudes')">
+                        Accéder au module
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Page Chapitres -->
+<div id="chapitres-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <!-- Bouton retour -->
+            <button onclick="showCoursPage()" class="mb-6 flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Retour aux cours
+            </button>
+
+            <!-- Contenu des chapitres -->
+            <div id="chapitres-content">
+                <!-- Le contenu sera injecté ici par JavaScript -->
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+// Données des chapitres pour tous les cours
+const chapitresData = {
+    'developpement-web': {
+        titre: '🌐 Développement Web',
+        couleur: 'orange',
+        chapitres: [
+            { titre: 'Chapitre 1 : Introduction au HTML5', duree: '4h', type: 'cours' },
+            { titre: 'Chapitre 2 : CSS3 et Responsive Design', duree: '6h', type: 'tp' },
+            { titre: 'Chapitre 3 : JavaScript Fondamental', duree: '8h', type: 'cours' },
+            { titre: 'Chapitre 4 : Frameworks Frontend', duree: '6h', type: 'td' },
+            { titre: 'Chapitre 5 : Backend avec Node.js', duree: '8h', type: 'tp' },
+            { titre: 'Chapitre 6 : Bases de données et API', duree: '8h', type: 'cours' },
+            { titre: 'Chapitre 7 : Sécurité Web', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 8 : Déploiement et DevOps', duree: '6h', type: 'tp' }
+        ]
+    },
+    'e-business': {
+        titre: '🛒 E-business, E-logistique, E-commerce',
+        couleur: 'blue',
+        chapitres: [
+            { titre: 'Chapitre 1 : Fondements du E-commerce', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : Stratégies Digitales', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : Logistique E-commerce', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : Plateformes E-business', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : Analytics E-commerce', duree: '4h', type: 'td' },
+            { titre: 'Chapitre 6 : Droit du E-commerce', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 7 : Marketing Digital', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 8 : Étude de cas pratique', duree: '10h', type: 'tp' }
+        ]
+    },
+    'systeme-information': {
+        titre: '📂 Système d\'information',
+        couleur: 'green',
+        chapitres: [
+            { titre: 'Chapitre 1 : Architecture SI', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : Gestion de données', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : Sécurité SI', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : Cloud Computing', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : ERP et CRM', duree: '8h', type: 'cours' },
+            { titre: 'Chapitre 6 : Urbanisation SI', duree: '6h', type: 'td' },
+            { titre: 'Chapitre 7 : Gouvernance SI', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 8 : Transformation digitale', duree: '8h', type: 'tp' }
+        ]
+    },
+    'marketing-digital': {
+        titre: '📊 Marketing Digital et Digital Analytics',
+        couleur: 'purple',
+        chapitres: [
+            { titre: 'Chapitre 1 : Stratégie Marketing Digital', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : SEO et SEM', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : Social Media Marketing', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : Analytics Avancés', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : Content Marketing', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 6 : Email Marketing', duree: '4h', type: 'td' },
+            { titre: 'Chapitre 7 : Marketing Automation', duree: '6h', type: 'tp' },
+            { titre: 'Chapitre 8 : ROI et KPI Digital', duree: '8h', type: 'cours' },
+            { titre: 'Chapitre 9 : Étude de cas complète', duree: '5h', type: 'tp' }
+        ]
+    },
+    'programmation-objet': {
+        titre: '💻 Programmation orientée objet',
+        couleur: 'red',
+        chapitres: [
+            { titre: 'Chapitre 1 :  INITIATION A LA PROGRAMMATION AVEC JAVA', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : Classes et Objets', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : Héritage et Polymorphisme', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : Design Patterns', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : UML et Modélisation', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 6 : Tests unitaires', duree: '8h', type: 'tp' },
+            { titre: 'Chapitre 7 : Refactoring', duree: '6h', type: 'td' },
+            { titre: 'Chapitre 8 : Projet final', duree: '8h', type: 'tp' }
+        ]
+    },
+    'base-donnees': {
+        titre: '🗄️ Base de données',
+        couleur: 'indigo',
+        chapitres: [
+            { titre: 'Chapitre 1 : Modélisation données', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : SQL Avancé', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : Optimisation BDD', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : NoSQL', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : Transactions ACID', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 6 : Data Warehouse', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 7 : Sécurité BDD', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 8 : Projet intégrateur', duree: '4h', type: 'tp' }
+        ]
+    },
+    'conduite-projet': {
+        titre: '📋 Conduite de projet digital',
+        couleur: 'yellow',
+        chapitres: [
+            { titre: 'Chapitre 1 : Méthodologies Agile', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : Gestion des risques', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : Planning et Budget', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : Management d\'équipe', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : Qualité et Tests', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 6 : Communication projet', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 7 : Livraison et Recette', duree: '6h', type: 'tp' },
+            { titre: 'Chapitre 8 : Retour d\'expérience', duree: '8h', type: 'cours' }
+        ]
+    },
+    'outils-decision': {
+        titre: '📊 Outils d\'aide à la décision et Business Intelligence',
+        couleur: 'pink',
+        chapitres: [
+            { titre: 'Chapitre 1 : Fondements de la BI', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : Data Mining', duree: '8h', type: 'td' },
+            { titre: 'Chapitre 3 : OLAP et Cubes', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 4 : Tableaux de bord', duree: '4h', type: 'tp' },
+            { titre: 'Chapitre 5 : Machine Learning basique', duree: '8h', type: 'cours' },
+            { titre: 'Chapitre 6 : Data Visualization', duree: '6h', type: 'td' },
+            { titre: 'Chapitre 7 : ETL et Data Integration', duree: '8h', type: 'tp' },
+            { titre: 'Chapitre 8 : Cas d\'entreprise', duree: '6h', type: 'cours' }
+        ]
+    },
+    'developpement-mobile': {
+        titre: '📱 Développement Mobile et Internet des objets',
+        couleur: 'teal',
+        chapitres: [
+            { titre: 'Chapitre 1 : Écosystème Mobile', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 2 : Android Native', duree: '8h', type: 'tp' },
+            { titre: 'Chapitre 3 : iOS Development', duree: '8h', type: 'tp' },
+            { titre: 'Chapitre 4 : React Native/Flutter', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 5 : IoT et Capteurs', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 6 : APIs Mobile', duree: '8h', type: 'tp' },
+            { titre: 'Chapitre 7 : Sécurité Mobile', duree: '6h', type: 'cours' },
+            { titre: 'Chapitre 8 : Publication Store', duree: '4h', type: 'tp' }
+        ]
+    },
+    'projet-fin-etudes': {
+        titre: '🎓 Projet de Fin d\'Études',
+        couleur: 'gray',
+        chapitres: [
+            { titre: 'Phase 1 : Choix du sujet', duree: '2 semaines', type: 'encadrement' },
+            { titre: 'Phase 2 : État de l\'art', duree: '3 semaines', type: 'recherche' },
+            { titre: 'Phase 3 : Conception', duree: '2 semaines', type: 'planification' },
+            { titre: 'Phase 4 : Développement', duree: '4 semaines', type: 'réalisation' },
+            { titre: 'Phase 5 : Tests et Validation', duree: '2 semaines', type: 'qualité' },
+            { titre: 'Phase 6 : Rédaction mémoire', duree: '3 semaines', type: 'rédaction' },
+            { titre: 'Phase 7 : Préparation soutenance', duree: '1 semaine', type: 'préparation' },
+            { titre: 'Phase 8 : Soutenance finale', duree: '1 jour', type: 'évaluation' }
+        ]
+    }
+};
+
+// Fonctions de navigation
+function showChapters(courseId) {
+    document.getElementById('cours-page').classList.add('hidden');
+    document.getElementById('chapitres-page').classList.remove('hidden');
+    loadChapters(courseId);
+}
+
+function showCoursPage() {
+    document.getElementById('chapitres-page').classList.add('hidden');
+    document.getElementById('cours-page').classList.remove('hidden');
+}
+
+function loadChapters(courseId) {
+    const cours = chapitresData[courseId];
+    const container = document.getElementById('chapitres-content');
+    
+    if (!cours) {
+        container.innerHTML = '<p class="text-center text-red-500">Cours non trouvé</p>';
+        return;
+    }
+    
+    // Calcul du total des heures
+    const totalHeures = cours.chapitres.reduce((total, chap) => {
+        if (chap.duree.includes('h')) {
+            return total + parseInt(chap.duree);
+        }
+        return total;
+    }, 0);
+    
+    container.innerHTML = `
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-${cours.couleur}-600 mb-4">${cours.titre}</h1>
+                <p class="text-gray-600">${cours.chapitres.length} chapitres • ${totalHeures > 0 ? totalHeures + 'h total' : 'Projet sur 2 mois'}</p>
+            </div>
+            
+            <div class="grid gap-6">
+                ${cours.chapitres.map((chapitre, index) => `
+                    <div class="border-l-4 border-${cours.couleur}-500 bg-${cours.couleur}-50 p-6 rounded-r-lg">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-semibold text-gray-800">${chapitre.titre}</h3>
+                            <span class="bg-${cours.couleur}-100 text-${cours.couleur}-800 px-3 py-1 rounded-full text-sm">
+                                ${chapitre.duree}
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 capitalize">${chapitre.type}</span>
+                            <button class="bg-${cours.couleur}-600 text-white px-4 py-2 rounded-lg hover:bg-${cours.couleur}-700 transition-colors">
+                                Accéder
+                            </button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button class="bg-${cours.couleur}-600 text-white px-8 py-3 rounded-lg hover:bg-${cours.couleur}-700 transition-colors font-medium">
+                    Télécharger tous les supports
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+
+
+// Gestion des filtres
+document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // Mettre à jour les boutons actifs
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active', 'bg-blue-600', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        
+        this.classList.add('active', 'bg-blue-600', 'text-white');
+        this.classList.remove('bg-gray-200', 'text-gray-700');
+        
+        // Filtrer les cours
+        document.querySelectorAll('.course-card').forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+        <!-- Page Ressources -->
+<div id="ressources-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gradient mb-4">📁 Ressources</h1>
+                <p class="text-xl text-gray-600">Documents, TD, TP et supports de cours</p>
+            </div>
+
+            <div class="grid lg:grid-cols-4 gap-8">
+                <!-- TD -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">📝</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Travaux Dirigés</h3>
+                    <p class="text-gray-600 text-center mb-6">Exercices corrigés et énoncés</p>
+                    <button onclick="openPage('dossiers-page')" class="w-full bg-yellow-500 text-white py-3 rounded-lg hover:bg-yellow-600 transition-colors">
+                        Parcourir les TD
+                    </button>
+                </div>
+
+                <!-- TP -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">🔬</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Travaux Pratiques</h3>
+                    <p class="text-gray-600 text-center mb-6">Manipulations et projets</p>
+                    <button onclick="openPage('dossiers-page')" class="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-colors">
+                        Parcourir les TP
+                    </button>
+                </div>
+
+                <!-- PDF -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">📄</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Documents PDF</h3>
+                    <p class="text-gray-600 text-center mb-6">Supports et références</p>
+                    <button onclick="openPage('dossiers-page')" class="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition-colors">
+                        Parcourir les PDF
+                    </button>
+                </div>
+
+                <!-- Outils -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl">🛠️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Outils</h3>
+                    <p class="text-gray-600 text-center mb-6">Logiciels et utilitaires</p>
+                    <button onclick="openPage('dossiers-page')" class="w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition-colors">
+                        Voir les outils
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Page Dossiers S5/S6 -->
+<div id="dossiers-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gradient mb-4">📂 Semestres</h1>
+                <p class="text-xl text-gray-600">Choisissez un semestre pour voir les modules</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Dossier S5 -->
+                <div onclick="openPage('s5-page')" class="bg-white rounded-2xl shadow-lg p-6 cursor-pointer card-hover text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-4xl">📂</span>
+                    </div>
+                    <h3 class="text-xl font-bold">Semestre 5</h3>
+                </div>
+
+                <!-- Dossier S6 -->
+                <div onclick="openPage('s6-page')" class="bg-white rounded-2xl shadow-lg p-6 cursor-pointer card-hover text-center">
+                    <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <span class="text-4xl">📂</span>
+                    </div>
+                    <h3 class="text-xl font-bold">Semestre 6</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Page S5 -->
+<div id="s5-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-3xl font-bold mb-8">📘 Modules du Semestre 5</h1>
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Développement Web</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 E-business, E-logistique, E-commerce</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Système d’information</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Marketing Digital et Digital Analytics</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Programmation orientée objet</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Base de données</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Page S6 -->
+<div id="s6-page" class="page-content hidden">
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h1 class="text-3xl font-bold mb-8">📙 Modules du Semestre 6</h1>
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Conduite de projet digital</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Outils d’aide à la décision et Business Intelligence</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Développement Mobile et Internet des objets</div>
+                <div class="bg-white shadow-lg rounded-xl p-6 cursor-pointer text-center card-hover">📂 Projet de Fin d'Études (2 mois)</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    // Fonction pour afficher/masquer les pages
+    function openPage(pageId) {
+        document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+        document.getElementById(pageId).classList.remove('hidden');
+    }
+</script>
+
+
+<!-- Page Planning -->
+<div id="planning-page" class="page-content hidden">
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gradient mb-4">📅 Planning - Semestre 5</h1>
+        <p class="text-xl text-gray-600">Emploi du temps regroupé (Gr1, Gr2, Gr3)</p>
+      </div>
+
+      <!-- Calendrier -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold mb-6">Semaine type</h2>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+
+          <!-- Lundi -->
+          <div class="text-center">
+            <h3 class="font-semibold text-gray-800 mb-4">Lundi</h3>
+            <div class="space-y-2">
+              <div class="bg-blue-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">8h30 - 10h25</p>
+                <p class="text-xs">Programmation orientée objet (TD/TP Gr1)</p>
+              </div>
+              <div class="bg-green-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">10h35 - 12h30</p>
+                <p class="text-xs">Base de données (TD/TP Gr3)</p>
+              </div>
+              <div class="bg-purple-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">14h00 - 15h55</p>
+                <p class="text-xs">Base de données (TD/TP Gr3)</p>
+              </div>
+              <div class="bg-yellow-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">16h05 - 18h00</p>
+                <p class="text-xs">E-business, E-logistique, E-commerce (TD/TP Gr2)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mardi -->
+          <div class="text-center">
+            <h3 class="font-semibold text-gray-800 mb-4">Mardi</h3>
+            <div class="space-y-2">
+              <div class="bg-blue-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">8h30 - 10h25</p>
+                <p class="text-xs">Développement Web (TD/TP Gr1)</p>
+              </div>
+              <div class="bg-green-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">10h35 - 12h30</p>
+                <p class="text-xs">Système d’information (TD/TP Gr1) Développement Web (TD/TP Gr3) Programmation orientée objet (TD/TP Gr2)</p>
+              </div>
+              <div class="bg-red-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">14h00 - 15h55</p>
+                <p class="text-xs">E-business, E-logistique, E-commerce (Cours)</p>
+              </div>
+              <div class="bg-indigo-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">16h05 - 18h00</p>
+                <p class="text-xs">Développement Web (Cours)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mercredi -->
+          <div class="text-center">
+            <h3 class="font-semibold text-gray-800 mb-4">Mercredi</h3>
+            <div class="space-y-2">
+              <div class="bg-orange-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">8h30 - 10h25</p>
+                <p class="text-xs">Marketing Digital et Digital Analytics (TD/TP Gr2)) E-business, E-logistique, E-commerce (TD/TP Gr1)</p>
+              </div>
+              <div class="bg-green-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">10h35 - 12h30</p>
+                <p class="text-xs">Développement Web (TD/TP Gr2)</p>
+              </div>
+              <div class="bg-purple-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">16h05 - 18h30 </p>
+                <p class="text-xs">Base de données (TD/TP Gr3)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jeudi -->
+          <div class="text-center">
+            <h3 class="font-semibold text-gray-800 mb-4">Jeudi</h3>
+            <div class="space-y-2">
+              <div class="bg-red-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">8h30 - 10h25</p>
+                <p class="text-xs">Système d’information (Cours)</p>
+              </div>
+              <div class="bg-indigo-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">10h35 - 12h30</p>
+                <p class="text-xs">Base de données (Cours)</p>
+              </div>
+              <div class="bg-pink-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">14h00 - 15h55</p>
+                <p class="text-xs">Système d’information (TD/TP Gr2)</p>
+              </div>
+              <div class="bg-yellow-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">16h05 - 18h00</p>
+                <p class="text-xs">Système d’information (TD/TP Gr3)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Vendredi -->
+          <div class="text-center">
+            <h3 class="font-semibold text-gray-800 mb-4">Vendredi</h3>
+            <div class="space-y-2">
+              <div class="bg-green-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">8h30 - 10h25</p>
+                <p class="text-xs">Marketing Digital et Digital Analytics (TD/TP Gr3) Base de données (TD/TP Gr1)</p>
+              </div>
+              <div class="bg-purple-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">10h35 - 12h30</p>
+                <p class="text-xs">Marketing Digital et Digital Analytics (TD/TP Gr1) Base de données (TD/TP Gr2)</p>
+              </div>
+              <div class="bg-blue-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">14h00 - 15h55</p>
+                <p class="text-xs">Marketing Digital et Digital Analytics (Cours)</p>
+              </div>
+              <div class="bg-yellow-100 p-3 rounded-lg">
+                <p class="text-sm font-medium">16h05 - 18h00</p>
+                <p class="text-xs">Programmation orientée objet (Cours)</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+                    <!-- Événements importants -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-2xl shadow-lg p-6">
+                            <h3 class="text-xl font-bold mb-4">📋 Examens à venir</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                                    <span class="font-medium">Examen Mathématiques</span>
+                                    <span class="text-sm text-red-600">25 Jan</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                                    <span class="font-medium">Projet IA - Rendu</span>
+                                    <span class="text-sm text-blue-600">30 Jan</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                                    <span class="font-medium">Soutenance Projet</span>
+                                    <span class="text-sm text-green-600">5 Fév</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-lg p-6">
+                            <h3 class="text-xl font-bold mb-4">🎉 Événements</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                                    <span class="font-medium">Hackathon étudiant</span>
+                                    <span class="text-sm text-purple-600">20 Jan</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-yellow-50 rounded-lg">
+                                    <span class="font-medium">Conférence Tech</span>
+                                    <span class="text-sm text-yellow-600">28 Jan</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-indigo-50 rounded-lg">
+                                    <span class="font-medium">Forum entreprises</span>
+                                    <span class="text-sm text-indigo-600">10 Fév</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page Projets -->
+        <div id="projets-page" class="page-content hidden">
+            <section class="py-16">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-bold text-gradient mb-4">🚀 Projets Étudiants</h1>
+                        <p class="text-xl text-gray-600">Découvrez les réalisations exceptionnelles de nos étudiants</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-2xl shadow-lg card-hover overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                                <span class="text-4xl text-white">🤖</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3">Assistant IA Conversationnel</h3>
+                                <p class="text-gray-600 mb-4">Chatbot intelligent utilisant les dernières technologies NLP</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Python</span>
+                                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">TensorFlow</span>
+                                    <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">NLP</span>
+                                </div>
+                                <button class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                                    Voir le projet
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-lg card-hover overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                                <span class="text-4xl text-white">📱</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3">App Mobile E-learning</h3>
+                                <p class="text-gray-600 mb-4">Application mobile pour l'apprentissage interactif</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">React Native</span>
+                                    <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Firebase</span>
+                                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Node.js</span>
+                                </div>
+                                <button class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors">
+                                    Voir le projet
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-lg card-hover overflow-hidden">
+                            <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                                <span class="text-4xl text-white">🎮</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-3">Jeu VR Éducatif</h3>
+                                <p class="text-gray-600 mb-4">Expérience immersive pour l'apprentissage des sciences</p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Unity</span>
+                                    <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">C#</span>
+                                    <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">VR</span>
+                                </div>
+                                <button class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                                    Voir le projet
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page Contact -->
+        <div id="contact-page" class="page-content hidden">
+            <section class="py-16">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-bold text-gradient mb-4">📞 Contact</h1>
+                        <p class="text-xl text-gray-600">Nous sommes là pour vous accompagner</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-6">Informations de contact</h2>
+                            <div class="space-y-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xl">📍</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Adresse</h3>
+                                        <p class="text-gray-600">settat</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xl">📧</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Email</h3>
+                                        <p class="text-gray-600">makout.mohamed.amine@gmail.com</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <span class="text-xl">📱</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Téléphone</h3>
+                                        <p class="text-gray-600">+212 647645823</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-2xl shadow-lg p-8">
+                            <h2 class="text-2xl font-bold mb-6">Envoyez-nous un message</h2>
+                            <form onsubmit="sendMessage(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nom complet</label>
+                                    <input type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                    <input type="email" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Sujet</label>
+                                    <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Question générale</option>
+                                        <option>Admission</option>
+                                        <option>Cours</option>
+                                        <option>Support technique</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                    <textarea required rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                    Envoyer le message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Plateforme Académique</h3>
+                    <p class="text-gray-400">Excellence en formation informatique depuis 1995</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Navigation</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" onclick="showPage('accueil')" class="hover:text-white transition-colors">Accueil</a></li>
+                        <li><a href="#" onclick="showPage('filiere')" class="hover:text-white transition-colors">Filière</a></li>
+                        <li><a href="#" onclick="showPage('cours')" class="hover:text-white transition-colors">Cours</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Ressources</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Bibliothèque</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Laboratoires</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Suivez-nous</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <span class="text-sm">f</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <span class="text-sm">t</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-900 transition-colors">
+                            <span class="text-sm">in</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Plateforme Académique -Système D'Informations Transformation Digital. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation entre pages
+        function showPage(pageName) {
+            // Cacher toutes les pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Afficher la page sélectionnée
+            document.getElementById(pageName + '-page').classList.remove('hidden');
+            
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Filtrage des cours
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                
+                // Mettre à jour les boutons actifs
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-blue-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                this.classList.add('active', 'bg-blue-600', 'text-white');
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                
+                // Filtrer les cours
+                document.querySelectorAll('.course-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Formulaire de contact
+        function sendMessage(event) {
+            event.preventDefault();
+            
+            // Simulation d'envoi
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            
+            btn.textContent = 'Envoi en cours...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.textContent = 'Message envoyé ✓';
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                btn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                    event.target.reset();
+                }, 2000);
+            }, 1500);
+        }
+
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer tous les éléments avec animation
+        document.querySelectorAll('.card-hover').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'983c9cb071eae242',t:'MTc1ODY1NzQ1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+<script>
+// Données des liens pour tous les chapitres de tous les cours
+const chapterLinks = {
+    'developpement-web': [
+        '/cours/developpement-web/chapitre-1',
+        '/cours/developpement-web/chapitre-2',
+        '/cours/developpement-web/chapitre-3',
+        '/cours/developpement-web/chapitre-4',
+        '/cours/developpement-web/chapitre-5',
+        '/cours/developpement-web/chapitre-6',
+        '/cours/developpement-web/chapitre-7',
+        '/cours/developpement-web/chapitre-8'
+    ],
+    'e-business': [
+        '/cours/e-business/chapitre-1',
+        '/cours/e-business/chapitre-2',
+        '/cours/e-business/chapitre-3',
+        '/cours/e-business/chapitre-4',
+        '/cours/e-business/chapitre-5',
+        '/cours/e-business/chapitre-6',
+        '/cours/e-business/chapitre-7',
+        '/cours/e-business/chapitre-8'
+    ],
+    'systeme-information': [
+        '/cours/systeme-information/chapitre-1',
+        '/cours/systeme-information/chapitre-2',
+        '/cours/systeme-information/chapitre-3',
+        '/cours/systeme-information/chapitre-4',
+        '/cours/systeme-information/chapitre-5',
+        '/cours/systeme-information/chapitre-6',
+        '/cours/systeme-information/chapitre-7',
+        '/cours/systeme-information/chapitre-8'
+    ],
+    'marketing-digital': [
+        '/cours/marketing-digital/chapitre-1',
+        '/cours/marketing-digital/chapitre-2',
+        '/cours/marketing-digital/chapitre-3',
+        '/cours/marketing-digital/chapitre-4',
+        '/cours/marketing-digital/chapitre-5',
+        '/cours/marketing-digital/chapitre-6',
+        '/cours/marketing-digital/chapitre-7',
+        '/cours/marketing-digital/chapitre-8',
+        '/cours/marketing-digital/chapitre-9'
+    ],
+    'programmation-objet': [
+        'https://drive.google.com/file/d/1JlBo9jsnYAKDMjeMRH1fS0DIbV6ap8Na/view?usp=drive_link',
+        '/cours/programmation-objet/chapitre-2',
+        '/cours/programmation-objet/chapitre-3',
+        '/cours/programmation-objet/chapitre-4',
+        '/cours/programmation-objet/chapitre-5',
+        '/cours/programmation-objet/chapitre-6',
+        '/cours/programmation-objet/chapitre-7',
+        '/cours/programmation-objet/chapitre-8'
+    ],
+    'base-donnees': [
+        '/cours/base-donnees/chapitre-1',
+        '/cours/base-donnees/chapitre-2',
+        '/cours/base-donnees/chapitre-3',
+        '/cours/base-donnees/chapitre-4',
+        '/cours/base-donnees/chapitre-5',
+        '/cours/base-donnees/chapitre-6',
+        '/cours/base-donnees/chapitre-7',
+        '/cours/base-donnees/chapitre-8'
+    ],
+    'conduite-projet': [
+        '/cours/conduite-projet/chapitre-1',
+        '/cours/conduite-projet/chapitre-2',
+        '/cours/conduite-projet/chapitre-3',
+        '/cours/conduite-projet/chapitre-4',
+        '/cours/conduite-projet/chapitre-5',
+        '/cours/conduite-projet/chapitre-6',
+        '/cours/conduite-projet/chapitre-7',
+        '/cours/conduite-projet/chapitre-8'
+    ],
+    'outils-decision': [
+        '/cours/outils-decision/chapitre-1',
+        '/cours/outils-decision/chapitre-2',
+        '/cours/outils-decision/chapitre-3',
+        '/cours/outils-decision/chapitre-4',
+        '/cours/outils-decision/chapitre-5',
+        '/cours/outils-decision/chapitre-6',
+        '/cours/outils-decision/chapitre-7',
+        '/cours/outils-decision/chapitre-8'
+    ],
+    'developpement-mobile': [
+        '/cours/developpement-mobile/chapitre-1',
+        '/cours/developpement-mobile/chapitre-2',
+        '/cours/developpement-mobile/chapitre-3',
+        '/cours/developpement-mobile/chapitre-4',
+        '/cours/developpement-mobile/chapitre-5',
+        '/cours/developpement-mobile/chapitre-6',
+        '/cours/developpement-mobile/chapitre-7',
+        '/cours/developpement-mobile/chapitre-8'
+    ],
+    'projet-fin-etudes': [
+        '/cours/projet-fin-etudes/phase-1',
+        '/cours/projet-fin-etudes/phase-2',
+        '/cours/projet-fin-etudes/phase-3',
+        '/cours/projet-fin-etudes/phase-4',
+        '/cours/projet-fin-etudes/phase-5',
+        '/cours/projet-fin-etudes/phase-6',
+        '/cours/projet-fin-etudes/phase-7',
+        '/cours/projet-fin-etudes/phase-8'
+    ]
+};
+
+// Fonction de redirection vers les chapitres
+function redirectToChapter(courseId, chapterIndex) {
+    const links = chapterLinks[courseId];
+    if (links && links[chapterIndex]) {
+        // Redirection vers la page du chapitre
+        window.location.href = links[chapterIndex];
+    } else {
+        // Fallback vers une page générique
+        window.location.href = `/cours/${courseId}/chapitre-${chapterIndex + 1}`;
+    }
+}
+
+// Fonction loadChapters modifiée avec les redirections
+function loadChapters(courseId) {
+    const cours = chapitresData[courseId];
+    const container = document.getElementById('chapitres-content');
+    
+    if (!cours) {
+        container.innerHTML = '<p class="text-center text-red-500">Cours non trouvé</p>';
+        return;
+    }
+    
+    const totalHeures = cours.chapitres.reduce((total, chap) => {
+        if (chap.duree.includes('h')) {
+            return total + parseInt(chap.duree);
+        }
+        return total;
+    }, 0);
+    
+    container.innerHTML = `
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-${cours.couleur}-600 mb-4">${cours.titre}</h1>
+                <p class="text-gray-600">${cours.chapitres.length} chapitres • ${totalHeures > 0 ? totalHeures + 'h total' : 'Projet sur 2 mois'}</p>
+            </div>
+            
+            <div class="grid gap-6">
+                ${cours.chapitres.map((chapitre, index) => `
+                    <div class="border-l-4 border-${cours.couleur}-500 bg-${cours.couleur}-50 p-6 rounded-r-lg">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="text-xl font-semibold text-gray-800">${chapitre.titre}</h3>
+                            <span class="bg-${cours.couleur}-100 text-${cours.couleur}-800 px-3 py-1 rounded-full text-sm">
+                                ${chapitre.duree}
+                            </span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600 capitalize">${chapitre.type}</span>
+                            <button onclick="redirectToChapter('${courseId}', ${index})" class="bg-${cours.couleur}-600 text-white px-4 py-2 rounded-lg hover:bg-${cours.couleur}-700 transition-colors">
+                                Accéder
+                            </button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button onclick="downloadAllSupports('${courseId}')" class="bg-${cours.couleur}-600 text-white px-8 py-3 rounded-lg hover:bg-${cours.couleur}-700 transition-colors font-medium">
+                    Télécharger tous les supports
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Fonction pour télécharger tous les supports (optionnel)
+function downloadAllSupports(courseId) {
+    // Redirection vers la page de téléchargement
+    window.location.href = `/cours/${courseId}/supports-complets`;
+    
+    // Ou ouvrir un PDF unique
+    // window.open(`/pdfs/${courseId}/supports-complets.pdf`, '_blank');
+}
+
+// Fonctions de navigation principales
+function showChapters(courseId) {
+    document.getElementById('cours-page').classList.add('hidden');
+    document.getElementById('chapitres-page').classList.remove('hidden');
+    loadChapters(courseId);
+}
+
+function showCoursPage() {
+    document.getElementById('chapitres-page').classList.add('hidden');
+    document.getElementById('cours-page').classList.remove('hidden');
+}
+</script>
